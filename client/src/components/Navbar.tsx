@@ -1,7 +1,8 @@
 import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Menu, X, BookOpen } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-serif text-2xl font-bold text-primary cursor-pointer">
+        <Link href="/" className="flex items-center gap-2 font-serif text-2xl font-bold text-primary cursor-pointer hover:opacity-90">
           <BookOpen className="h-8 w-8 text-secondary" />
           <span>Lamp Academy</span>
         </Link>
@@ -21,10 +22,8 @@ export default function Navbar() {
           <a href="#" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">About Us</a>
           <a href="#" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Courses</a>
           <a href="#" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Contact</a>
-          <Link href="/register">
-            <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold cursor-pointer">
-              Apply Now
-            </Button>
+          <Link href="/register" className={cn(buttonVariants({ variant: "default" }), "bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold cursor-pointer")}>
+            Apply Now
           </Link>
         </div>
 
@@ -41,10 +40,8 @@ export default function Navbar() {
           <a href="#" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>About Us</a>
           <a href="#" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>Courses</a>
           <a href="#" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>Contact</a>
-          <Link href="/register" onClick={() => setIsOpen(false)}>
-            <Button className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold cursor-pointer">
-              Apply Now
-            </Button>
+          <Link href="/register" onClick={() => setIsOpen(false)} className={cn(buttonVariants({ variant: "default" }), "w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold cursor-pointer")}>
+            Apply Now
           </Link>
         </div>
       )}

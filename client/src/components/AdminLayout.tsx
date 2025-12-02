@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { BookOpen, LayoutDashboard, Image as ImageIcon, GraduationCap, Home, LogOut } from "lucide-react";
+import { BookOpen, LayoutDashboard, Image as ImageIcon, GraduationCap, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -16,11 +16,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Sidebar */}
       <aside className="w-64 bg-white border-r hidden md:flex flex-col">
         <div className="p-6 border-b">
-          <Link href="/admin">
-            <a className="flex items-center gap-2 font-serif text-xl font-bold text-primary">
-              <BookOpen className="h-6 w-6 text-secondary" />
-              <span>Lamp Admin</span>
-            </a>
+          <Link href="/admin" className="flex items-center gap-2 font-serif text-xl font-bold text-primary hover:opacity-80">
+            <BookOpen className="h-6 w-6 text-secondary" />
+            <span>Lamp Admin</span>
           </Link>
         </div>
         
@@ -28,15 +26,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           {navItems.map((item) => {
             const isActive = location === item.href;
             return (
-              <Link key={item.href} href={item.href}>
-                <a className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              <Link 
+                key={item.href} 
+                href={item.href}
+                className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive 
                     ? "bg-primary/10 text-primary" 
                     : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                }`}>
-                  <item.icon className="h-4 w-4" />
-                  {item.label}
-                </a>
+                }`}
+              >
+                <item.icon className="h-4 w-4" />
+                {item.label}
               </Link>
             );
           })}
