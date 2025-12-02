@@ -85,13 +85,50 @@ export default function RegistrationForm() {
     }
   };
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    setIsSubmitted(true);
-    toast({
-      title: "Registration Successful!",
-      description: "Welcome to Lamp Academy. We will contact you shortly.",
-    });
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const response = await fetch("/api/registrations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: values.fullName,
+          nationalId: values.nationalId,
+          age: parseInt(values.age),
+          university: values.university,
+          college: values.college,
+          course: values.course,
+          phone: values.phone,
+          email: values.email,
+          guardianPhone: values.guardianPhone,
+          address: values.address,
+          friends: values.friends,
+          photoUrl: photoPreview,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        toast({
+          title: "Registration Successful!",
+          description: "Welcome to Lamp Academy. We will contact you shortly.",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to submit registration. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to submit registration. Please try again.",
+        variant: "destructive",
+      });
+    }
   }
 
   if (isSubmitted) {

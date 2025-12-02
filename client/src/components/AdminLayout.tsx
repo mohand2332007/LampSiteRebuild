@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { BookOpen, LayoutDashboard, Image as ImageIcon, GraduationCap, Home } from "lucide-react";
+import { BookOpen, LayoutDashboard, Image as ImageIcon, GraduationCap, Home, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -7,6 +7,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navItems = [
     { href: "/admin", icon: LayoutDashboard, label: "Overview" },
+    { href: "/admin/registrations", icon: Users, label: "Registrations" },
     { href: "/admin/hero", icon: ImageIcon, label: "Hero Section" },
     { href: "/admin/courses", icon: GraduationCap, label: "Courses" },
     { href: "/admin/form-options", icon: LayoutDashboard, label: "Form Options" },
