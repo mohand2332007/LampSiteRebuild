@@ -33,9 +33,9 @@ export default function Hero() {
             {hero.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/register" className={cn(buttonVariants({ size: "lg" }), "bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold text-lg h-14 px-8 cursor-pointer")}>
+            <a href="/#register" className={cn(buttonVariants({ size: "lg" }), "bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold text-lg h-14 px-8 cursor-pointer")}>
               {hero.ctaPrimary}
-            </Link>
+            </a>
             <Button size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white/10 text-lg h-14 px-8">
               {hero.ctaSecondary} <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

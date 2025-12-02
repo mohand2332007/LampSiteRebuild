@@ -9,6 +9,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { href: "/admin", icon: LayoutDashboard, label: "Overview" },
     { href: "/admin/hero", icon: ImageIcon, label: "Hero Section" },
     { href: "/admin/courses", icon: GraduationCap, label: "Courses" },
+    { href: "/admin/form-options", icon: LayoutDashboard, label: "Form Options" },
   ];
 
   return (

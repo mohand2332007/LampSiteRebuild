@@ -24,6 +24,12 @@ export interface Course {
   price: string;
 }
 
+export interface FormOption {
+  id: string;
+  label: string;
+  value: string;
+}
+
 interface ContentContextType {
   hero: HeroContent;
   updateHero: (newHero: HeroContent) => void;
@@ -31,6 +37,17 @@ interface ContentContextType {
   addCourse: (course: Course) => void;
   updateCourse: (id: string, course: Course) => void;
   deleteCourse: (id: string) => void;
+  
+  // Form Options
+  universities: FormOption[];
+  addUniversity: (uni: FormOption) => void;
+  removeUniversity: (id: string) => void;
+  updateUniversity: (id: string, uni: FormOption) => void;
+
+  availableCourses: FormOption[];
+  addAvailableCourse: (course: FormOption) => void;
+  removeAvailableCourse: (id: string) => void;
+  updateAvailableCourse: (id: string, course: FormOption) => void;
 }
 
 // Default Data
@@ -73,6 +90,25 @@ const defaultCourses: Course[] = [
   }
 ];
 
+const defaultUniversities: FormOption[] = [
+  { id: "1", label: "Cairo University", value: "Cairo University" },
+  { id: "2", label: "Ain Shams University", value: "Ain Shams University" },
+  { id: "3", label: "Alexandria University", value: "Alexandria University" },
+  { id: "4", label: "Mansoura University", value: "Mansoura University" },
+  { id: "5", label: "Assiut University", value: "Assiut University" },
+  { id: "6", label: "Helwan University", value: "Helwan University" },
+  { id: "7", label: "Zagazig University", value: "Zagazig University" },
+  { id: "8", label: "Other", value: "Other" }
+];
+
+const defaultAvailableCourses: FormOption[] = [
+  { id: "1", label: "Full Stack Development", value: "Full Stack Development" },
+  { id: "2", label: "Digital Marketing Mastery", value: "Digital Marketing Mastery" },
+  { id: "3", label: "UI/UX Design Fundamentals", value: "UI/UX Design Fundamentals" },
+  { id: "4", label: "Data Science Essentials", value: "Data Science Essentials" },
+  { id: "5", label: "Business Management", value: "Business Management" }
+];
+
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
 export function ContentProvider({ children }: { children: ReactNode }) {
@@ -87,33 +123,43 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     return saved ? JSON.parse(saved) : defaultCourses;
   });
 
+  const [universities, setUniversities] = useState<FormOption[]>(() => {
+    const saved = localStorage.getItem("lamp_universities");
+    return saved ? JSON.parse(saved) : defaultUniversities;
+  });
+
+  const [availableCourses, setAvailableCourses] = useState<FormOption[]>(() => {
+    const saved = localStorage.getItem("lamp_available_courses");
+    return saved ? JSON.parse(saved) : defaultAvailableCourses;
+  });
+
+
   // Persist to localStorage
-  useEffect(() => {
-    localStorage.setItem("lamp_hero", JSON.stringify(hero));
-  }, [hero]);
+  useEffect(() => { localStorage.setItem("lamp_hero", JSON.stringify(hero)); }, [hero]);
+  useEffect(() => { localStorage.setItem("lamp_courses", JSON.stringify(courses)); }, [courses]);
+  useEffect(() => { localStorage.setItem("lamp_universities", JSON.stringify(universities)); }, [universities]);
+  useEffect(() => { localStorage.setItem("lamp_available_courses", JSON.stringify(availableCourses)); }, [availableCourses]);
 
-  useEffect(() => {
-    localStorage.setItem("lamp_courses", JSON.stringify(courses));
-  }, [courses]);
+  const updateHero = (newHero: HeroContent) => setHero(newHero);
+  const addCourse = (course: Course) => setCourses([...courses, course]);
+  const updateCourse = (id: string, updatedCourse: Course) => setCourses(courses.map(c => c.id === id ? updatedCourse : c));
+  const deleteCourse = (id: string) => setCourses(courses.filter(c => c.id !== id));
 
-  const updateHero = (newHero: HeroContent) => {
-    setHero(newHero);
-  };
+  const addUniversity = (uni: FormOption) => setUniversities([...universities, uni]);
+  const removeUniversity = (id: string) => setUniversities(universities.filter(u => u.id !== id));
+  const updateUniversity = (id: string, uni: FormOption) => setUniversities(universities.map(u => u.id === id ? uni : u));
 
-  const addCourse = (course: Course) => {
-    setCourses([...courses, course]);
-  };
-
-  const updateCourse = (id: string, updatedCourse: Course) => {
-    setCourses(courses.map(c => c.id === id ? updatedCourse : c));
-  };
-
-  const deleteCourse = (id: string) => {
-    setCourses(courses.filter(c => c.id !== id));
-  };
+  const addAvailableCourse = (course: FormOption) => setAvailableCourses([...availableCourses, course]);
+  const removeAvailableCourse = (id: string) => setAvailableCourses(availableCourses.filter(c => c.id !== id));
+  const updateAvailableCourse = (id: string, course: FormOption) => setAvailableCourses(availableCourses.map(c => c.id === id ? course : c));
 
   return (
-    <ContentContext.Provider value={{ hero, updateHero, courses, addCourse, updateCourse, deleteCourse }}>
+    <ContentContext.Provider value={{ 
+      hero, updateHero, 
+      courses, addCourse, updateCourse, deleteCourse,
+      universities, addUniversity, removeUniversity, updateUniversity,
+      availableCourses, addAvailableCourse, removeAvailableCourse, updateAvailableCourse
+    }}>
       {children}
     </ContentContext.Provider>
   );

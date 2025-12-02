@@ -11,17 +11,19 @@ import Register from "@/pages/Register";
 import Dashboard from "@/pages/Admin/Dashboard";
 import EditHero from "@/pages/Admin/EditHero";
 import EditCourses from "@/pages/Admin/EditCourses";
+import EditFormOptions from "@/pages/Admin/EditFormOptions";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home}/>
-      <Route path="/register" component={Register} />
+      <Route path="/register" component={Home} />
       
       {/* Admin Routes */}
       <Route path="/admin" component={Dashboard} />
       <Route path="/admin/hero" component={EditHero} />
       <Route path="/admin/courses" component={EditCourses} />
+      <Route path="/admin/form-options" component={EditFormOptions} />
 
       <Route component={NotFound} />
     </Switch>
