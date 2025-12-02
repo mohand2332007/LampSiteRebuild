@@ -5,6 +5,7 @@ import { z } from "zod";
 import { BookOpen, Upload, Plus, X, User, CheckCircle2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
   Form,
   FormControl,
@@ -389,7 +390,7 @@ export default function RegistrationForm() {
                   </div>
                   
                   <div className="flex-1">
-                    <FormLabel className="block mb-2">Choose a photo</FormLabel>
+                    <Label className="block mb-2">Choose a photo</Label>
                     <Input 
                       type="file" 
                       accept="image/*" 
