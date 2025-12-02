@@ -18,10 +18,10 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Home</Link>
-          <a href="#" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">About Us</a>
-          <a href="#" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Courses</a>
-          <a href="#" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Contact</a>
+          <Link href="/#home" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Home</Link>
+          <a href="/#about" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">About Us</a>
+          <a href="/#courses" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Courses</a>
+          <a href="/#contact" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Contact</a>
           <Link href="/register" className={cn(buttonVariants({ variant: "default" }), "bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold cursor-pointer")}>
             Apply Now
           </Link>
@@ -36,10 +36,10 @@ export default function Navbar() {
       {/* Mobile Nav */}
       {isOpen && (
         <div className="md:hidden border-t bg-background p-4 flex flex-col gap-4 animate-in slide-in-from-top-5">
-          <Link href="/" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>Home</Link>
-          <a href="#" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>About Us</a>
-          <a href="#" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>Courses</a>
-          <a href="#" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>Contact</a>
+          <Link href="/#home" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>Home</Link>
+          <a href="/#about" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>About Us</a>
+          <a href="/#courses" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>Courses</a>
+          <a href="/#contact" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>Contact</a>
           <Link href="/register" onClick={() => setIsOpen(false)} className={cn(buttonVariants({ variant: "default" }), "w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold cursor-pointer")}>
             Apply Now
           </Link>

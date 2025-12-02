@@ -9,11 +9,17 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       <main className="flex-grow">
-        <Hero />
-        <FeatureSection />
-        <CourseGrid />
+        <div id="home">
+          <Hero />
+        </div>
+        <div id="about">
+          <FeatureSection />
+        </div>
+        <div id="courses">
+          <CourseGrid />
+        </div>
         {/* Newsletter Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
+        <section id="contact" className="py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Start Your Learning Journey Today</h2>
             <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">

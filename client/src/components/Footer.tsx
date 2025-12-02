@@ -27,11 +27,11 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-serif font-bold text-lg mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              <li><Link href="/" className="hover:text-secondary transition-colors cursor-pointer">Home</Link></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">All Courses</a></li>
+              <li><Link href="/#home" className="hover:text-secondary transition-colors cursor-pointer">Home</Link></li>
+              <li><a href="/#about" className="hover:text-secondary transition-colors">About Us</a></li>
+              <li><a href="/#courses" className="hover:text-secondary transition-colors">All Courses</a></li>
               <li><Link href="/register" className="hover:text-secondary transition-colors cursor-pointer">Admissions</Link></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">Contact</a></li>
+              <li><a href="/#contact" className="hover:text-secondary transition-colors">Contact</a></li>
               <li><Link href="/admin" className="hover:text-secondary transition-colors cursor-pointer text-slate-600 text-xs">Admin Login</Link></li>
             </ul>
           </div>
