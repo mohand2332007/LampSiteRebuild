@@ -1,38 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import codingImg from "@assets/generated_images/coding_on_screen_close_up.png";
-import businessImg from "@assets/generated_images/business_meeting_professional.png";
-import designImg from "@assets/generated_images/creative_design_workspace.png";
-
-const courses = [
-  {
-    image: codingImg,
-    category: "Technology",
-    title: "Full Stack Development",
-    duration: "12 Weeks",
-    students: "1.2k Students",
-    price: "$999"
-  },
-  {
-    image: businessImg,
-    category: "Business",
-    title: "Digital Marketing Mastery",
-    duration: "8 Weeks",
-    students: "850 Students",
-    price: "$799"
-  },
-  {
-    image: designImg,
-    category: "Design",
-    title: "UI/UX Design Fundamentals",
-    duration: "10 Weeks",
-    students: "2k Students",
-    price: "$899"
-  }
-];
+import { useContent } from "@/lib/contentContext";
 
 export default function CourseGrid() {
+  const { courses } = useContent();
+
   return (
     <section className="py-24 bg-background">
       <div className="container px-4 mx-auto">
@@ -45,8 +18,8 @@ export default function CourseGrid() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {courses.map((course, index) => (
-            <Card key={index} className="group overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-300">
+          {courses.map((course) => (
+            <Card key={course.id} className="group overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src={course.image} 
