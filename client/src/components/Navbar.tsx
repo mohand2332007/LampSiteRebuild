@@ -21,9 +21,11 @@ export default function Navbar() {
           <a href="#" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">About Us</a>
           <a href="#" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Courses</a>
           <a href="#" className="text-sm font-medium hover:text-primary transition-colors cursor-pointer">Contact</a>
-          <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold">
-            Apply Now
-          </Button>
+          <Link href="/register">
+            <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold cursor-pointer">
+              Apply Now
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -39,9 +41,11 @@ export default function Navbar() {
           <a href="#" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>About Us</a>
           <a href="#" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>Courses</a>
           <a href="#" className="text-sm font-medium hover:text-primary cursor-pointer" onClick={() => setIsOpen(false)}>Contact</a>
-          <Button className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold">
-            Apply Now
-          </Button>
+          <Link href="/register" onClick={() => setIsOpen(false)}>
+            <Button className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold cursor-pointer">
+              Apply Now
+            </Button>
+          </Link>
         </div>
       )}
     </nav>

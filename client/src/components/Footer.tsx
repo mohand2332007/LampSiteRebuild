@@ -30,8 +30,9 @@ export default function Footer() {
               <li><Link href="/" className="hover:text-secondary transition-colors cursor-pointer">Home</Link></li>
               <li><a href="#" className="hover:text-secondary transition-colors">About Us</a></li>
               <li><a href="#" className="hover:text-secondary transition-colors">All Courses</a></li>
-              <li><a href="#" className="hover:text-secondary transition-colors">Admissions</a></li>
+              <li><Link href="/register" className="hover:text-secondary transition-colors cursor-pointer">Admissions</Link></li>
               <li><a href="#" className="hover:text-secondary transition-colors">Contact</a></li>
+              <li><Link href="/admin" className="hover:text-secondary transition-colors cursor-pointer text-slate-600 text-xs">Admin Login</Link></li>
             </ul>
           </div>
 

@@ -7,6 +7,7 @@ import { ContentProvider } from "@/lib/contentContext";
 
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import Register from "@/pages/Register";
 import Dashboard from "@/pages/Admin/Dashboard";
 import EditHero from "@/pages/Admin/EditHero";
 import EditCourses from "@/pages/Admin/EditCourses";
@@ -15,6 +16,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home}/>
+      <Route path="/register" component={Register} />
       
       {/* Admin Routes */}
       <Route path="/admin" component={Dashboard} />

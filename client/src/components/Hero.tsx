@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useContent } from "@/lib/contentContext";
+import { Link } from "wouter";
 
 export default function Hero() {
   const { hero } = useContent();
@@ -31,9 +32,11 @@ export default function Hero() {
             {hero.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold text-lg h-14 px-8">
-              {hero.ctaPrimary}
-            </Button>
+            <Link href="/register">
+              <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold text-lg h-14 px-8 cursor-pointer">
+                {hero.ctaPrimary}
+              </Button>
+            </Link>
             <Button size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white/10 text-lg h-14 px-8">
               {hero.ctaSecondary} <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
